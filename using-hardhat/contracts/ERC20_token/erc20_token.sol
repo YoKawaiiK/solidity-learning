@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.13;
+pragma solidity >0.8.0 <0.9.0;
 
 import "./ownable.sol";
 
@@ -42,7 +42,7 @@ contract ERC20Token is Ownable {
         return decimals;
     }
 
-    event Transfer(address _from, address _to, uint256 _value);
+    event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
     function transfer(address _to, uint256 _value)
         public
@@ -67,7 +67,7 @@ contract ERC20Token is Ownable {
         );
 
         balances[_to] += _value;
-        balances[_from] += _value;
+        balances[_from] -= _value;
         if (allowanceToken < MAX_UINT256) {
             allowed[_from][msg.sender] -= _value;
         }
@@ -76,6 +76,11 @@ contract ERC20Token is Ownable {
 
     function balanceOf(address _owner) public view returns (uint256 balance) {
         return balances[_owner];
+    }
+
+    
+    function myBalance() public view returns (uint256 balance) {
+        return balances[msg.sender];
     }
 
     event Approval(address _sender, address _spender, uint256 _value);
