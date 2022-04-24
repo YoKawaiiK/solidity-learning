@@ -62,31 +62,31 @@ describe("Case 1: auction engine", () => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  describe("Buy", async () => {
-    it("Allows to buy", async () => {
-      const item = "fake item";
-      const duration = 60;
-      const money = ethers.utils.parseEther("0.0001");
+  // describe("Buy", async () => {
+  //   it("Allows to buy", async () => {
+  //     const item = "fake item";
+  //     const duration = 60;
+  //     const money = ethers.utils.parseEther("0.0001");
 
-      const tx = await auction
-        .connect(seller)
-        .createAuction(money, 3, item, duration);
+  //     const tx = await auction
+  //       .connect(seller)
+  //       .createAuction(money, 3, item, duration);
 
-      await delay(1000);
+  //     await delay(1000);
       
 
-      const buyTx = await auction.connect(buyer).buy(0, { value: money });
+  //     const buyTx = await auction.connect(buyer).buy(0, { value: money });
 
-      const currentAuction = await auction.auctions(0);
-      const finalPrice = currentAuction.finalPrice;
+  //     const currentAuction = await auction.auctions(0);
+  //     const finalPrice = currentAuction.finalPrice;
 
-      await expect(() => buyTx)
-      .to.changeEtherBalance(
-        seller,
-        finalPrice - Math.floor((finalPrice * 10) / 100), {
+  //     await expect(() => buyTx)
+  //     .to.changeEtherBalance(
+  //       seller,
+  //       finalPrice - Math.floor((finalPrice * 10) / 100), {
           
-        }
-      );
-    });
-  });
+  //       }
+  //     );
+  //   });
+  // });
 });

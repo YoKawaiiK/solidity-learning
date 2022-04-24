@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat coverage",
+    "test-one": " npx hardhat test --grep",
     "compile": "npx hardhat compile"
   },
   "author": "",

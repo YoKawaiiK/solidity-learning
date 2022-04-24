@@ -3,8 +3,8 @@ const chai = require("chai");
 // const { solidity } = require("ethereum-waffle");
 
 require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-ethers")
-require("solidity-coverage")
+require("@nomiclabs/hardhat-ethers");
+require("solidity-coverage");
 
 // chai.use(solidity)
 
@@ -25,5 +25,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.0",
+      },
+      {
+        version: "0.8.13",
+      },
+    ],
+  },
 };
