@@ -1,3 +1,4 @@
+
 node_modules
 .env
 coverage
@@ -9,3 +10,4 @@ cache
 artifacts
 
 .deps
+.vscode
