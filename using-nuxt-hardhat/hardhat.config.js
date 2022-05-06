@@ -18,5 +18,12 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
-  chainId: 8081
+  // chainId: 8081,
+  networks: {
+    localhost: {
+      url: "http://127.0.0.1:8545",
+      // url: "localhost:8545",
+      // chainId: 
+    },
+  },
 };

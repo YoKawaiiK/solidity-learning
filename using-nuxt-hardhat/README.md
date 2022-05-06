@@ -1,15 +1,23 @@
 # Basic Sample Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project demonstrates a basic Hardhat use case and Nuxt.
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
+## How to run it
+
+1. In directory with hardhat
+```
 npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+```
+
+2. In directory with hardhat to deploy smart contract
+```
+npx hardhat run scripts/auction.js --network localhost
+
+```
+
+3. In directory with nuxt
+```
+npm run dev
+
 ```
