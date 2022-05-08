@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+const { expect, assert } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("Testing Lottery contract", function () {
@@ -72,6 +72,12 @@ describe("Testing Lottery contract", function () {
     expect(pickedWinner).to.be.ok;
 
     await expect(pickedWinner).to.emit(lottery, "Winner");
+
+    // ? info: get values from Events
+    // const eventFilter = lottery.filters.Winner();
+    // const events = await lottery.queryFilter(eventFilter, "latest");
+    // const hash = events[0];
+    // const winnerAddress = hash.args.winner;
 
     const prizePool = await lottery.connect(participant1).getPrizePool();
     expect(prizePool).to.eq(ethers.utils.parseEther("0"));
