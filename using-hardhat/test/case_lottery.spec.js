@@ -20,6 +20,9 @@ describe("Testing Lottery contract", function () {
 
     const tx = await lottery.connect(participant1).enter({ value });
     expect(() => tx).to.changeEtherBalance(lottery, value);
+
+    const players = await lottery.connect(participant1).getPlayers();
+    expect(players).to.contain(participant1.address);
   });
 
   it("Enter the Lottery with not be enough ethers", async () => {
@@ -58,6 +61,12 @@ describe("Testing Lottery contract", function () {
     const tx2 = await lottery.connect(participant2).enter({ value });
     expect(() => tx2).to.changeEtherBalance(lottery, value);
 
+    const players = await lottery.connect(participant1).getPlayers();
+    expect(players).to.include.members([
+      participant1.address,
+      participant2.address,
+    ]);
+
     const pickedWinner = lottery.connect(owner).pickWinner();
 
     expect(pickedWinner).to.be.ok;
@@ -76,6 +85,12 @@ describe("Testing Lottery contract", function () {
 
     const tx2 = await lottery.connect(participant2).enter({ value });
     expect(() => tx2).to.changeEtherBalance(lottery, value);
+
+    const players = await lottery.connect(participant1).getPlayers();
+    expect(players).to.include.members([
+      participant1.address,
+      participant2.address,
+    ]);
 
     const pickedWinner = lottery.connect(participant2).pickWinner();
 
