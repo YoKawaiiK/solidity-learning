@@ -67,7 +67,7 @@ describe("Testing Lottery contract", function () {
     const tx1 = await lottery.connect(participant1).enter({ value });
     expect(() => tx1).to.changeEtherBalance(lottery, value);
 
-    const tx2 = await lottery.connecFt(participant2).enter({ value });
+    const tx2 = await lottery.connect(participant2).enter({ value });
     expect(() => tx2).to.changeEtherBalance(lottery, value);
 
     const pickedWinner = lottery.connect(participant2).pickWinner();
