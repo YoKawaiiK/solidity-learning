@@ -22,6 +22,13 @@ describe("Testing Lottery contract", function () {
     expect(() => tx).to.changeEtherBalance(lottery, value);
   });
 
+  it("Enter the Lottery with not be enough ethers", async () => {
+    const value = ethers.utils.parseEther("0.1");
+
+    const tx = lottery.connect(participant1).enter({ value });
+    await expect(tx).to.be.reverted;
+  });
+
   it("Change enter price by owner", async () => {
     const oldPrice = await lottery.connect(owner).getEnterPrice();
     expect(oldPrice).to.eq(ethers.utils.parseEther("1"));
